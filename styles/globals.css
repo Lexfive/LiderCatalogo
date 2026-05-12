@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── IMPORTAÇÃO DE FONTES ─────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
+
+/* ─── CSS CUSTOM PROPERTIES ────────────────────────────────────────────────── */
+:root {
+  --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+  --font-jost: 'Jost', 'Helvetica Neue', sans-serif;
+}
+
+/* ─── RESET & BASE ──────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-cream text-charcoal font-sans;
+    line-height: 1.6;
+  }
+
+  /* Headings usam a serif por padrão */
+  h1, h2, h3 {
+    @apply font-serif;
+  }
+
+  /* Foco visível para acessibilidade por teclado */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-gold;
+  }
+
+  /* Scrollbar discreta */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-cream-100;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-charcoal-300 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-charcoal-400;
+  }
+}
+
+/* ─── COMPONENTES REUTILIZÁVEIS ─────────────────────────────────────────────── */
+@layer components {
+  /* Seção com padding padrão */
+  .section {
+    @apply py-16 md:py-24 px-6 md:px-12 lg:px-16;
+  }
+
+  /* Container centralizado */
+  .container-elite {
+    @apply max-w-[1400px] mx-auto;
+  }
+
+  /* Tag de seção (texto pequeno dourado acima do título) */
+  .section-tag {
+    @apply text-gold text-label uppercase tracking-[0.25em] block mb-3;
+  }
+
+  /* Linha divisória dourada */
+  .gold-divider {
+    @apply w-12 h-px bg-gold my-6;
+  }
+
+  /* Botão primário dourado */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-gold text-white font-sans
+           text-xs tracking-[0.14em] uppercase px-8 py-3.5
+           transition-colors duration-300 hover:bg-gold-light
+           focus-visible:outline-2 focus-visible:outline-gold;
+  }
+
+  /* Botão outline escuro */
+  .btn-outline {
+    @apply inline-flex items-center gap-2 border border-charcoal text-charcoal font-sans
+           text-xs tracking-[0.14em] uppercase px-8 py-3.5
+           transition-all duration-300 hover:bg-charcoal hover:text-white
+           focus-visible:outline-2 focus-visible:outline-charcoal;
+  }
+
+  /* Botão outline claro (sobre fundo escuro) */
+  .btn-outline-white {
+    @apply inline-flex items-center gap-2 border border-white/40 text-white font-sans
+           text-xs tracking-[0.14em] uppercase px-8 py-3.5
+           transition-all duration-300 hover:border-gold-light hover:text-gold-light
+           focus-visible:outline-2 focus-visible:outline-white;
+  }
+
+  /* Botão WhatsApp */
+  .btn-whatsapp {
+    @apply inline-flex items-center justify-center gap-3 bg-[#25D366] text-white font-sans
+           text-xs tracking-[0.12em] uppercase px-8 py-4 w-full
+           transition-colors duration-300 hover:bg-[#1ebe59]
+           focus-visible:outline-2 focus-visible:outline-[#25D366];
+  }
+
+  /* Card de produto */
+  .product-card {
+    @apply bg-white group cursor-pointer
+           transition-transform duration-400 ease-luxury
+           hover:-translate-y-1.5;
+  }
+
+  /* Imagem do produto com zoom no hover */
+  .product-img-wrap {
+    @apply aspect-product overflow-hidden relative;
+  }
+
+  .product-img-zoom {
+    @apply absolute inset-0 transition-transform duration-700 ease-luxury
+           group-hover:scale-[1.04];
+  }
+
+  /* Input de formulário */
+  .form-input {
+    @apply w-full border-0 border-b border-charcoal-200 pb-3 pt-1
+           font-sans text-sm text-charcoal bg-transparent outline-none
+           placeholder:text-charcoal-300
+           transition-colors duration-300
+           focus:border-gold;
+  }
+
+  /* Label de formulário */
+  .form-label {
+    @apply block text-label-sm uppercase tracking-[0.15em] text-charcoal-400 mb-2;
+  }
+}
+
+/* ─── UTILITÁRIOS CUSTOM ────────────────────────────────────────────────────── */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Gradiente de texto dourado */
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-gold to-gold-light bg-clip-text text-transparent;
+  }
+
+  /* Overlay escuro padrão */
+  .overlay-dark {
+    @apply absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent;
+  }
+}

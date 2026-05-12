@@ -181,8 +181,10 @@ As configurações já estão no `netlify.toml`, mas confirme:
 | Campo | Valor |
 |-------|-------|
 | Build command | `npm run build` |
-| Publish directory | `.next` |
+| Publish directory | *(deixe em branco — o plugin Next.js gerencia)* |
 | Node version | `20` |
+
+> **Atenção:** não defina `publish = ".next"` manualmente. Com o plugin `@netlify/plugin-nextjs`, isso causa conflito. O plugin já sabe onde estão os arquivos.
 
 #### 4. Configure as variáveis de ambiente
 No painel do Netlify → **Site settings** → **Environment variables**:
@@ -275,6 +277,89 @@ O IP está disponível em hPanel → **Configurações de DNS**.
 
 ---
 
+
+## SEO Técnico (sitemap, robots, manifest)
+
+O projeto já gera esses arquivos **automaticamente** via Next.js — sem plugins extras.
+
+### Como funciona
+
+| Arquivo gerado | Código-fonte | URL final |
+|---|---|---|
+| `/sitemap.xml` | `app/sitemap.ts` | `seudominio.com/sitemap.xml` |
+| `/robots.txt` | `app/robots.ts` | `seudominio.com/robots.txt` |
+| `/manifest.webmanifest` | `app/manifest.ts` | `seudominio.com/manifest.webmanifest` |
+
+### Adicionar novo produto atualiza o sitemap automaticamente
+
+Quando você adiciona um produto em `lib/products.ts`, o `app/sitemap.ts` já o inclui na próxima build — zero manutenção manual.
+
+### Para PWA completo (offline support)
+
+```bash
+npm install next-pwa
+```
+
+Adicione em `next.config.js`:
+```js
+const withPWA = require('next-pwa')({ dest: 'public' })
+module.exports = withPWA({ /* ...suas configs */ })
+```
+
+Crie `public/icons/icon-192.png` e `public/icons/icon-512.png` com o logo da marca.
+
+---
+
+
+## Formulário de contato — Backend
+
+Escolha **uma** das três opções abaixo. Cada uma tem zero custo para começar.
+
+### Opção A — Resend (recomendado para e-mail transacional)
+
+- Gratuito até 3.000 e-mails/mês
+- E-mail chega formatado, com reply-to configurado
+
+```bash
+npm install resend
+```
+
+Em `.env.local`:
+```
+RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+CONTACT_EMAIL=atendimento@maisonelite.com.br
+```
+
+Em `app/api/contato/route.ts`, descomente o bloco `// OPÇÃO A: Resend`.
+
+### Opção B — Netlify Forms (mais simples, zero backend)
+
+- Gratuito até 100 submissões/mês
+- Sem código extra — Netlify detecta o HTML automaticamente
+
+Em `app/contato/page.tsx`, substitua:
+```tsx
+import { ContactForm } from '@/components/sections/ContactForm'
+// por:
+import { ContactFormNetlify } from '@/components/sections/ContactFormNetlify'
+```
+
+Veja os envios em: **Netlify Dashboard → Forms → contato-maison-elite**
+
+Configure notificação por e-mail: **Forms → Notifications → Add e-mail**
+
+### Opção C — Formspree
+
+- Gratuito até 50 submissões/mês
+- Sem backend, mas com painel de visualização
+
+1. Crie conta em [formspree.io](https://formspree.io)
+2. Crie um formulário e copie o endpoint
+3. Em `.env.local`: `NEXT_PUBLIC_FORMSPREE_ENDPOINT=https://formspree.io/f/xxxxx`
+4. No `ContactForm.tsx`, substitua o fetch para `/api/contato` pelo endpoint do Formspree
+
+---
+
 ## Migração para CMS
 
 O projeto foi arquitetado para facilitar a migração para um CMS. Veja como fazer:
@@ -291,7 +376,7 @@ import { createClient } from '@sanity/client'
 const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
   dataset: 'production',
-  apiVersion: '2024-01-01',
+  apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2025-05-12', // use a data atual da implementação
   useCdn: true,
 })
 

@@ -1,0 +1,38 @@
+# ─── NETLIFY CONFIG ─────────────────────────────────────────────────────────────
+# O plugin @netlify/plugin-nextjs gerencia publish directory automaticamente
+# no modo SSR/ISR. NÃO defina publish = ".next" nesse caso — gera conflito.
+# Exceção: se usar `output: 'export'` (estático), use publish = "out".
+# ────────────────────────────────────────────────────────────────────────────────
+
+[build]
+  command = "npm run build"
+  # publish omitido: gerenciado pelo plugin Next.js
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_VERSION  = "10"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Headers de segurança e performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Netlify Forms — backend gratuito de formulário
+# Ativado pelo atributo data-netlify="true" no <form>. Sem config extra aqui.
