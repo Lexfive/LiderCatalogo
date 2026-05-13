@@ -33,9 +33,9 @@ export function Footer() {
             <Link
               href="/"
               className="font-serif text-2xl font-light tracking-[0.1em] block mb-4"
-              aria-label="Maison Élite — Página inicial"
+              aria-label="Líder Molduras — Página inicial"
             >
-              Maison<span className="text-gold">Élite</span>
+              Líder<span className="text-gold">Molduras</span>
             </Link>
             <p className="text-sm text-white/40 leading-relaxed max-w-[280px] mb-8">
               Arte e sofisticação para transformar cada ambiente em uma experiência estética
@@ -47,21 +47,21 @@ export function Footer() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Instagram da Maison Élite"
+                aria-label="Instagram da Líder Molduras"
                 className="text-white/40 hover:text-gold transition-colors duration-300"
               >
                 <Instagram size={18} />
               </a>
               <a
                 href={`tel:+55${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '31999990000'}`}
-                aria-label="Telefone da Maison Élite"
+                aria-label="Telefone da Líder Molduras"
                 className="text-white/40 hover:text-gold transition-colors duration-300"
               >
                 <Phone size={18} />
               </a>
               <a
-                href="mailto:atendimento@maisonelite.com.br"
-                aria-label="E-mail da Maison Élite"
+                href="mailto:atendimento@lidermolduras.com.br"
+                aria-label="E-mail da Líder Molduras"
                 className="text-white/40 hover:text-gold transition-colors duration-300"
               >
                 <Mail size={18} />
@@ -134,7 +134,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-white/8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs text-white/25 tracking-wide">
-            © {new Date().getFullYear()} Maison Élite. Todos os direitos reservados.
+            © {new Date().getFullYear()} Líder Molduras. Todos os direitos reservados.
           </p>
           <div className="flex items-center gap-6">
             <Link href="#" className="text-xs text-white/25 hover:text-white/50 transition-colors">

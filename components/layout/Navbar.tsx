@@ -58,14 +58,14 @@ export function Navbar() {
         {/* Logo */}
         <Link
           href="/"
-          aria-label="Maison Élite — Página inicial"
+          aria-label="Líder Molduras — Página inicial"
           className={cn(
             'font-serif text-2xl font-light tracking-[0.12em]',
             'transition-colors duration-300',
             scrolled || !isHome ? 'text-charcoal' : 'text-white'
           )}
         >
-          Maison<span className="text-gold">Élite</span>
+          Líder<span className="text-gold">Molduras</span>
         </Link>
 
         {/* Links desktop */}
@@ -142,7 +142,7 @@ export function Navbar() {
               {/* Header do drawer */}
               <div className="flex items-center justify-between px-8 h-[72px] border-b border-charcoal-200">
                 <Link href="/" className="font-serif text-xl font-light tracking-wide">
-                  Maison<span className="text-gold">Élite</span>
+                  Líder<span className="text-gold">Molduras</span>
                 </Link>
                 <button
                   onClick={() => setMobileOpen(false)}

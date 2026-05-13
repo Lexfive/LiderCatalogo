@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
-const siteName = 'Maison Élite'
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://maisonelite.com.br'
+const siteName = 'Líder Molduras'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://lidermolduras.com.br'
 const defaultDescription =
   'Quadros decorativos, molduras artesanais e espelhos exclusivos de alto padrão. Peças que transformam ambientes com elegância e sofisticação.'
 

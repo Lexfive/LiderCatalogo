@@ -8,7 +8,7 @@ import { CtaBanner } from '@/components/sections/CtaBanner'
 export const metadata: Metadata = buildMetadata({
   title: 'Sobre a Marca',
   description:
-    'Conheça a história da Maison Élite, nossa filosofia de curadoria, proposta de valor e os diferenciais que nos tornam referência em decoração premium no Brasil.',
+    'Conheça a história da Líder Molduras, nossa filosofia de curadoria, proposta de valor e os diferenciais que nos tornam referência em decoração premium no Brasil.',
   path: '/sobre',
 })
 
@@ -59,7 +59,7 @@ export default function AboutPage() {
                 <div
                   className="w-full aspect-[3/4] relative"
                   style={{ background: 'linear-gradient(135deg, #2d2520, #4a3830)' }}
-                  aria-label="Ambiente decorado com peças Maison Élite"
+                  aria-label="Ambiente decorado com peças Líder Molduras"
                 >
                   <div className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
                     <div className="w-1/2 h-2/3 border border-gold/30" />
@@ -72,7 +72,7 @@ export default function AboutPage() {
                         intenção.&rdquo;
                       </blockquote>
                       <cite className="block mt-3 text-[0.65rem] tracking-[0.2em] uppercase text-gold not-italic">
-                        — Fundadoras, Maison Élite
+                        — Fundadoras, Líder Molduras
                       </cite>
                     </div>
                   </div>
@@ -99,7 +99,7 @@ export default function AboutPage() {
                 <div className="space-y-4 text-charcoal-600 text-sm leading-relaxed mb-10">
                   <p>
                     Fundada em 2016 por duas artistas apaixonadas por design de interiores, a
-                    Maison Élite nasceu da vontade de trazer ao mercado brasileiro peças com o
+                    Líder Molduras nasceu da vontade de trazer ao mercado brasileiro peças com o
                     refinamento das melhores casas europeias — mas com alma e identidade
                     genuinamente nossas.
                   </p>
@@ -159,7 +159,7 @@ export default function AboutPage() {
             <AnimatedSection>
               <SectionHeader
                 tag="Nossos Diferenciais"
-                title="Por que escolher a<br /><em>Maison Élite?</em>"
+                title="Por que escolher a<br /><em>Líder Molduras?</em>"
                 align="center"
               />
             </AnimatedSection>

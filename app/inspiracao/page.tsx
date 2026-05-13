@@ -7,7 +7,7 @@ import { CtaBanner } from '@/components/sections/CtaBanner'
 export const metadata: Metadata = buildMetadata({
   title: 'Galeria de Inspiração',
   description:
-    'Uma curadoria de ambientes criados com peças da Maison Élite. Deixe-se inspirar para transformar sua casa.',
+    'Uma curadoria de ambientes criados com peças da Líder Molduras. Deixe-se inspirar para transformar sua casa.',
   path: '/inspiracao',
 })
 
@@ -98,7 +98,7 @@ export default function InspirationPage() {
 
             {/* Nota sobre as imagens */}
             <p className="text-center text-xs text-charcoal-300 mt-10 leading-relaxed">
-              Ambientes decorados com peças do catálogo Maison Élite.{' '}
+              Ambientes decorados com peças do catálogo Líder Molduras.{' '}
               <span className="text-charcoal-400">
                 Substitua os placeholders pelas fotos reais dos seus projetos.
               </span>

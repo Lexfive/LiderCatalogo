@@ -56,8 +56,8 @@ export async function POST(req: NextRequest) {
     // import { Resend } from 'resend'
     // const resend = new Resend(process.env.RESEND_API_KEY)
     // await resend.emails.send({
-    //   from: 'Maison Élite <noreply@maisonelite.com.br>',
-    //   to: process.env.CONTACT_EMAIL || 'atendimento@maisonelite.com.br',
+    //   from: 'Líder Molduras <noreply@lidermolduras.com.br>',
+    //   to: process.env.CONTACT_EMAIL || 'atendimento@lidermolduras.com.br',
     //   replyTo: email,
     //   subject: `Novo contato de ${name}${interest ? ` — ${interest}` : ''}`,
     //   html: `

@@ -11,8 +11,8 @@ import type { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Maison Élite — Decoração Premium',
-    short_name: 'Maison Élite',
+    name: 'Líder Molduras — Decoração Premium',
+    short_name: 'Líder Molduras',
     description: 'Quadros, molduras e espelhos exclusivos de alto padrão.',
     start_url: '/',
     display: 'standalone',

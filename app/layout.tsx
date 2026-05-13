@@ -23,10 +23,10 @@ const jost = Jost({
 
 // ─── METADATA GLOBAL ──────────────────────────────────────────────────────────
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://maisonelite.com.br'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://lidermolduras.com.br'),
   title: {
-    template: '%s | Maison Élite',
-    default: 'Maison Élite — Quadros, Molduras & Espelhos Premium',
+    template: '%s | Líder Molduras',
+    default: 'Líder Molduras — Quadros, Molduras & Espelhos Premium',
   },
   description:
     'Quadros decorativos, molduras artesanais e espelhos exclusivos de alto padrão. Peças que transformam ambientes com elegância e sofisticação.',
@@ -40,18 +40,18 @@ export const metadata: Metadata = {
     'quadros para sala',
     'espelhos exclusivos',
   ],
-  authors: [{ name: 'Maison Élite' }],
-  creator: 'Maison Élite',
+  authors: [{ name: 'Líder Molduras' }],
+  creator: 'Líder Molduras',
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
-    siteName: 'Maison Élite',
+    siteName: 'Líder Molduras',
     images: [
       {
         url: '/images/og-default.jpg',
         width: 1200,
         height: 630,
-        alt: 'Maison Élite — Quadros, Molduras & Espelhos Premium',
+        alt: 'Líder Molduras — Quadros, Molduras & Espelhos Premium',
       },
     ],
   },

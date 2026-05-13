@@ -1,4 +1,4 @@
-# Maison Élite — Catálogo Online Premium
+# Líder Molduras — Catálogo Online Premium
 
 Site catálogo para marca de decoração de alto padrão com foco em quadros, molduras e espelhos.
 
@@ -28,8 +28,8 @@ Site catálogo para marca de decoração de alto padrão com foco em quadros, mo
 
 ```bash
 # 1. Clone o repositório
-git clone https://github.com/seu-usuario/maison-elite.git
-cd maison-elite
+git clone https://github.com/seu-usuario/lider-molduras.git
+cd lider-molduras
 
 # 2. Instale as dependências
 npm install
@@ -164,8 +164,8 @@ images: [
 ```bash
 git init
 git add .
-git commit -m "feat: projeto inicial Maison Élite"
-git remote add origin https://github.com/SEU-USUARIO/maison-elite.git
+git commit -m "feat: projeto inicial Líder Molduras"
+git remote add origin https://github.com/SEU-USUARIO/lider-molduras.git
 git push -u origin main
 ```
 
@@ -173,7 +173,7 @@ git push -u origin main
 1. Acesse [app.netlify.com](https://app.netlify.com)
 2. Clique em **"Add new site"** → **"Import an existing project"**
 3. Selecione **GitHub** e autorize o acesso
-4. Escolha o repositório `maison-elite`
+4. Escolha o repositório `lider-molduras`
 
 #### 3. Configure o build
 As configurações já estão no `netlify.toml`, mas confirme:
@@ -193,7 +193,7 @@ No painel do Netlify → **Site settings** → **Environment variables**:
 NEXT_PUBLIC_WHATSAPP_NUMBER=5531999990000
 NEXT_PUBLIC_WHATSAPP_MESSAGE=Olá! Gostaria de saber mais sobre os produtos.
 NEXT_PUBLIC_SITE_URL=https://seu-site.netlify.app
-NEXT_PUBLIC_SITE_NAME=Maison Élite
+NEXT_PUBLIC_SITE_NAME=Líder Molduras
 ```
 
 #### 5. Instale o plugin Next.js
@@ -327,7 +327,7 @@ npm install resend
 Em `.env.local`:
 ```
 RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxxxxx
-CONTACT_EMAIL=atendimento@maisonelite.com.br
+CONTACT_EMAIL=atendimento@lidermolduras.com.br
 ```
 
 Em `app/api/contato/route.ts`, descomente o bloco `// OPÇÃO A: Resend`.
@@ -344,7 +344,7 @@ import { ContactForm } from '@/components/sections/ContactForm'
 import { ContactFormNetlify } from '@/components/sections/ContactFormNetlify'
 ```
 
-Veja os envios em: **Netlify Dashboard → Forms → contato-maison-elite**
+Veja os envios em: **Netlify Dashboard → Forms → contato-lider-molduras**
 
 Configure notificação por e-mail: **Forms → Notifications → Add e-mail**
 
@@ -442,7 +442,7 @@ O mesmo padrão se aplica: substitua apenas as funções utilitárias em `lib/pr
 ## Estrutura do projeto
 
 ```
-maison-elite/
+lider-molduras/
 ├── app/                          # Rotas (Next.js App Router)
 │   ├── layout.tsx                # Layout raiz (Navbar, Footer, WhatsApp)
 │   ├── page.tsx                  # Home
@@ -495,4 +495,4 @@ maison-elite/
 
 ---
 
-*Desenvolvido com ❤️ — Maison Élite © 2024*
+*Desenvolvido com ❤️ — Líder Molduras © 2024*

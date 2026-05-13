@@ -14,7 +14,7 @@
  * 2. Deploy no Netlify — o Netlify detecta data-netlify="true" no HTML
  *    e passa a capturar os envios automaticamente.
  *
- * 3. Veja os envios em: Netlify Dashboard → Forms → contato-maison-elite
+ * 3. Veja os envios em: Netlify Dashboard → Forms → contato-lider-molduras
  *
  * 4. Para notificação por e-mail: Netlify → Forms → Notifications → Add e-mail
  *
@@ -66,7 +66,7 @@ export function ContactFormNetlify() {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams({
-          'form-name': 'contato-maison-elite',
+          'form-name': 'contato-lider-molduras',
           ...form,
         }).toString(),
       })
@@ -100,10 +100,10 @@ export function ContactFormNetlify() {
 
   return (
     // data-netlify="true" — Netlify detecta este atributo no HTML estático da build
-    // name="contato-maison-elite" — identificador no painel do Netlify
+    // name="contato-lider-molduras" — identificador no painel do Netlify
     <form
       onSubmit={handleSubmit}
-      name="contato-maison-elite"
+      name="contato-lider-molduras"
       method="POST"
       data-netlify="true"
       data-netlify-honeypot="bot-field"  // Campo anti-spam
@@ -111,7 +111,7 @@ export function ContactFormNetlify() {
       noValidate
     >
       {/* Campo oculto obrigatório pelo Netlify Forms */}
-      <input type="hidden" name="form-name" value="contato-maison-elite" />
+      <input type="hidden" name="form-name" value="contato-lider-molduras" />
 
       {/* Honeypot anti-spam — deve ficar oculto para humanos */}
       <p className="hidden" aria-hidden="true">
