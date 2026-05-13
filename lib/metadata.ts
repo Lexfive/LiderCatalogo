@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 
 const siteName = 'Líder Molduras'
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://lidermolduras.com.br'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
 const defaultDescription =
   'Quadros decorativos, molduras artesanais e espelhos exclusivos de alto padrão. Peças que transformam ambientes com elegância e sofisticação.'
 

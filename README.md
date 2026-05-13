@@ -327,7 +327,7 @@ npm install resend
 Em `.env.local`:
 ```
 RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxxxxx
-CONTACT_EMAIL=atendimento@lidermolduras.com.br
+CONTACT_EMAIL=atendimento@seu-dominio.com.br
 ```
 
 Em `app/api/contato/route.ts`, descomente o bloco `// OPÇÃO A: Resend`.

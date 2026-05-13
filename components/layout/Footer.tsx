@@ -60,7 +60,7 @@ export function Footer() {
                 <Phone size={18} />
               </a>
               <a
-                href="mailto:atendimento@lidermolduras.com.br"
+                href={`mailto:${process.env.NEXT_PUBLIC_EMAIL || "contato@seudominio.com.br"}`}
                 aria-label="E-mail da Líder Molduras"
                 className="text-white/40 hover:text-gold transition-colors duration-300"
               >

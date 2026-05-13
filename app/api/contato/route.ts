@@ -56,8 +56,8 @@ export async function POST(req: NextRequest) {
     // import { Resend } from 'resend'
     // const resend = new Resend(process.env.RESEND_API_KEY)
     // await resend.emails.send({
-    //   from: 'Líder Molduras <noreply@lidermolduras.com.br>',
-    //   to: process.env.CONTACT_EMAIL || 'atendimento@lidermolduras.com.br',
+    //   from: `Líder Molduras <noreply@${process.env.NEXT_PUBLIC_EMAIL?.split('@')[1] || 'seu-dominio.com.br'}>`,  // configure NEXT_PUBLIC_EMAIL
+    //   to: process.env.CONTACT_EMAIL,  // configure CONTACT_EMAIL no Netlify
     //   replyTo: email,
     //   subject: `Novo contato de ${name}${interest ? ` — ${interest}` : ''}`,
     //   html: `

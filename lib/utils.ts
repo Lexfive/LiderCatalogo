@@ -18,7 +18,7 @@ export function getWhatsAppUrl(message?: string): string {
 
 /** Gera a URL do WhatsApp para um produto específico */
 export function getProductWhatsAppUrl(productName: string, productSlug: string): string {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://lidermolduras.com.br'
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
   const message = `Olá! Tenho interesse no produto *${productName}* (${siteUrl}/produto/${productSlug}). Poderia me enviar mais informações e disponibilidade?`
   return getWhatsAppUrl(message)
 }

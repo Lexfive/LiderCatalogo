@@ -24,9 +24,9 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'E-mail',
-    value: 'atendimento@lidermolduras.com.br',
+    value: process.env.NEXT_PUBLIC_EMAIL || 'contato@seudominio.com.br',
     detail: 'Resposta em até 24 horas',
-    href: 'mailto:atendimento@lidermolduras.com.br',
+    href: `mailto:${process.env.NEXT_PUBLIC_EMAIL || 'contato@seudominio.com.br'}`,
   },
   {
     icon: Clock,
