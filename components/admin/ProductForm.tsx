@@ -4,12 +4,13 @@ import { useState, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { useDropzone } from 'react-dropzone'
 import { createClient } from '@/lib/supabase/client'
-import { generateSlug, uploadProductImage, deleteProductImage } from '@/lib/supabase/products-db'
+import { generateSlug } from '@/lib/supabase/slug'
+import { uploadProductImage, deleteProductImage } from '@/lib/supabase/storage-client'
 import { cn } from '@/lib/utils'
 import type { ProductRow } from '@/lib/supabase/types'
 import {
-  ImagePlus, X, GripVertical, Loader2, Save,
-  AlertCircle, CheckCircle2, ChevronDown,
+  ImagePlus, X, Loader2, Save,
+  AlertCircle, CheckCircle2,
 } from 'lucide-react'
 
 // ─── Opções dos campos ────────────────────────────────────────────────────────
@@ -166,7 +167,7 @@ function Textarea({ className, ...props }: React.TextareaHTMLAttributes<HTMLText
 }
 
 function TagCheckbox({
-  value, label, checked, onChange,
+  label, checked, onChange,
 }: {
   value: string; label: string; checked: boolean; onChange: () => void
 }) {

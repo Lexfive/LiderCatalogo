@@ -51,14 +51,14 @@ export interface ProductDimensions {
 }
 
 export interface Product {
-  id: number
+  id: number | string
   slug: string                   // URL amigável, único, kebab-case
   name: string                   // Nome de exibição
   category: ProductCategory      // quadro | moldura | espelho
-  styles: ProductStyle[]         // Tags de estilo (para filtros)
+  styles: string[]               // Tags de estilo (para filtros)
   dimensions: ProductDimensions  // Dimensões em cm
   materials: string              // Descrição dos materiais
-  finish: ProductFinish[]        // Tipos de acabamento
+  finish: string[]               // Tipos de acabamento
   description: string            // Descrição curta — aparece nos cards
   fullDescription: string        // Descrição completa — página do produto
   images: string[]               // Caminhos em /public/ — ex: ['/images/products/slug/01.jpg']
@@ -444,7 +444,7 @@ export function getFeaturedProducts(): Product[] {
 }
 
 /** Retorna produtos relacionados (mesma categoria, excluindo o atual) */
-export function getRelatedProducts(currentId: number, category: ProductCategory, limit = 4): Product[] {
+export function getRelatedProducts(currentId: number | string, category: ProductCategory, limit = 4): Product[] {
   return products
     .filter((p) => p.category === category && p.id !== currentId && p.available)
     .slice(0, limit)

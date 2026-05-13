@@ -11,21 +11,7 @@
 import { createServerSupabaseClient } from './server'
 import { createClient } from './client'
 import type { ProductRow, ProductInsert, ProductUpdate } from './types'
-import { v4 as uuidv4 } from 'uuid'
-
-// ─── Helpers ──────────────────────────────────────────────────────────────────
-
-/** Gera slug a partir do nome: "Quadro Mar Azul" → "quadro-mar-azul" */
-export function generateSlug(name: string): string {
-  return name
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '') // remove acentos
-    .replace(/[^a-z0-9\s-]/g, '')
-    .trim()
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
-}
+import { generateSlug } from './slug'
 
 // ─── LEITURA (Server Components / catálogo público) ───────────────────────────
 
@@ -202,49 +188,3 @@ export async function deleteProductDB(id: string): Promise<boolean> {
   return !error
 }
 
-// ─── STORAGE (upload de imagens) ──────────────────────────────────────────────
-
-/**
- * Faz upload de uma imagem para o Supabase Storage
- * Retorna a URL pública da imagem ou null em caso de erro
- */
-export async function uploadProductImage(
-  file: File,
-  productSlug: string
-): Promise<string | null> {
-  const supabase = createClient()
-
-  const ext = file.name.split('.').pop()?.toLowerCase() ?? 'jpg'
-  const fileName = `${productSlug}/${uuidv4()}.${ext}`
-
-  const { error } = await supabase.storage
-    .from('product-images')
-    .upload(fileName, file, {
-      cacheControl: '3600',
-      upsert: false,
-      contentType: file.type,
-    })
-
-  if (error) { console.error('[Storage] upload:', error.message); return null }
-
-  const { data } = supabase.storage
-    .from('product-images')
-    .getPublicUrl(fileName)
-
-  return data.publicUrl
-}
-
-/** Remove uma imagem do storage pelo caminho */
-export async function deleteProductImage(url: string): Promise<boolean> {
-  const supabase = createClient()
-
-  // Extrai o caminho relativo da URL pública
-  const path = url.split('/product-images/').pop()
-  if (!path) return false
-
-  const { error } = await supabase.storage
-    .from('product-images')
-    .remove([path])
-
-  return !error
-}

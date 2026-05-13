@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { Pencil, Eye, EyeOff, Star, Trash2, ExternalLink } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -16,6 +15,7 @@ interface ProductSummary {
   available: boolean
   featured: boolean
   created_at: string
+  slug: string
   images: string[]
   badge: string | null
 }
@@ -30,7 +30,6 @@ export function AdminProductList({ products: initial }: { products: ProductSumma
   const [products, setProducts] = useState(initial)
   const [loading, setLoading] = useState<string | null>(null) // id do produto em loading
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null)
-  const router = useRouter()
   const supabase = createClient()
 
   // Toggle disponibilidade
@@ -200,7 +199,7 @@ export function AdminProductList({ products: initial }: { products: ProductSumma
               </Link>
 
               {/* Ver no site */}
-              <a href={`/produto/${product.id}`} target="_blank" rel="noopener noreferrer"
+              <a href={`/produto/${product.slug}`} target="_blank" rel="noopener noreferrer"
                 className="w-8 h-8 flex items-center justify-center text-[#9E9A91]
                            hover:text-[#0A0A0A] hover:bg-[#F4F3EF] transition-colors rounded-sm"
                 title="Ver no site">

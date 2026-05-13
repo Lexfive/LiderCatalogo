@@ -18,11 +18,13 @@ export default async function EditarProdutoPage({
   const supabase = createServerSupabaseClient()
   const { data: { user } } = await supabase.auth.getUser()
 
-  const { data: product } = await supabase
+  const { data } = await supabase
     .from('products')
     .select('*')
     .eq('id', params.id)
     .single()
+
+  const product = data as ProductRow | null
 
   if (!product) notFound()
 

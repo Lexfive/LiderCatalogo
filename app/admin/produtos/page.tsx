@@ -4,6 +4,7 @@ import { createServerSupabaseClient } from '@/lib/supabase/server'
 import { AdminNav } from '@/components/admin/AdminNav'
 import { AdminProductList } from '@/components/admin/AdminProductList'
 import { PlusCircle } from 'lucide-react'
+import type { ProductRow } from '@/lib/supabase/types'
 
 export const metadata: Metadata = { title: 'Produtos' }
 
@@ -17,10 +18,15 @@ export default async function AdminProdutosPage() {
   const { data: { user } } = await supabase.auth.getUser()
 
   // Busca TODOS os produtos (incluindo indisponíveis) para o admin
-  const { data: products } = await supabase
+  const { data } = await supabase
     .from('products')
-    .select('id, name, sku, category, available, featured, created_at, images, badge')
+    .select('id, name, sku, category, available, featured, created_at, slug, images, badge')
     .order('created_at', { ascending: false })
+
+  const products = (data ?? []) as Pick<
+    ProductRow,
+    'id' | 'name' | 'sku' | 'category' | 'available' | 'featured' | 'created_at' | 'slug' | 'images' | 'badge'
+  >[]
 
   const total = products?.length ?? 0
   const ativos = products?.filter((p) => p.available).length ?? 0
