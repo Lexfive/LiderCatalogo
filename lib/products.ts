@@ -1,7 +1,7 @@
 /**
  * lib/products.ts
  * ─────────────────────────────────────────────────────────────────────────────
- * Fonte de dados dos produtos da Maison Élite.
+ * Fonte de dados dos produtos da Líder Molduras.
  *
  * COMO ADICIONAR UM NOVO PRODUTO:
  * 1. Copie o bloco de um produto existente e cole ao final do array `products`.

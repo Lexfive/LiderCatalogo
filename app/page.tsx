@@ -9,7 +9,7 @@ import { SectionHeader } from '@/components/ui/SectionHeader'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Maison Élite — Quadros, Molduras & Espelhos Premium',
+  title: 'Líder Molduras — Quadros, Molduras & Espelhos Premium',
   description:
     'Quadros decorativos, molduras artesanais e espelhos exclusivos de alto padrão. Peças que transformam ambientes com elegância e sofisticação.',
 }

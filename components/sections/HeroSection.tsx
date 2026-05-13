@@ -6,7 +6,7 @@ export function HeroSection() {
   return (
     <section
       className="relative min-h-screen flex items-center overflow-hidden"
-      aria-label="Apresentação da Maison Élite"
+      aria-label="Apresentação da Líder Molduras"
     >
       {/* Background com gradiente sofisticado */}
       <div

@@ -11,14 +11,14 @@ export function getWhatsAppUrl(message?: string): string {
   const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5531999990000'
   const defaultMsg =
     process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE ||
-    'Olá! Gostaria de mais informações sobre os produtos da Maison Élite.'
+    'Olá! Gostaria de mais informações sobre os produtos da Líder Molduras.'
   const encoded = encodeURIComponent(message || defaultMsg)
   return `https://wa.me/${number}?text=${encoded}`
 }
 
 /** Gera a URL do WhatsApp para um produto específico */
 export function getProductWhatsAppUrl(productName: string, productSlug: string): string {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://maisonelite.com.br'
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
   const message = `Olá! Tenho interesse no produto *${productName}* (${siteUrl}/produto/${productSlug}). Poderia me enviar mais informações e disponibilidade?`
   return getWhatsAppUrl(message)
 }

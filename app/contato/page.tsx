@@ -9,7 +9,7 @@ import { Phone, Mail, Clock, MapPin } from 'lucide-react'
 export const metadata: Metadata = buildMetadata({
   title: 'Contato',
   description:
-    'Entre em contato com a Maison Élite. Solicite um orçamento, tire dúvidas ou agende uma visita ao nosso showroom em Belo Horizonte, MG.',
+    'Entre em contato com a Líder Molduras. Solicite um orçamento, tire dúvidas ou agende uma visita ao nosso showroom em Belo Horizonte, MG.',
   path: '/contato',
 })
 
@@ -24,9 +24,9 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'E-mail',
-    value: 'atendimento@maisonelite.com.br',
+    value: process.env.NEXT_PUBLIC_EMAIL || 'contato@seudominio.com.br',
     detail: 'Resposta em até 24 horas',
-    href: 'mailto:atendimento@maisonelite.com.br',
+    href: `mailto:${process.env.NEXT_PUBLIC_EMAIL || 'contato@seudominio.com.br'}`,
   },
   {
     icon: Clock,
@@ -92,7 +92,7 @@ export default function ContactPage() {
               {/* Mapa placeholder */}
               <div
                 className="mt-10 h-48 bg-cream-100 border border-charcoal-200 flex items-center justify-center"
-                aria-label="Localização da Maison Élite no mapa"
+                aria-label="Localização da Líder Molduras no mapa"
               >
                 <div className="text-center">
                   <MapPin size={24} className="text-gold mx-auto mb-2" aria-hidden="true" />
