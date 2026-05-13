@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
@@ -29,7 +31,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
   }
 
   return (
-    <motion.article
+    <motion.div
       whileHover={{ y: -6 }}
       transition={{ type: 'tween', duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
@@ -91,6 +93,6 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           </p>
         </div>
       </Link>
-    </motion.article>
+    </motion.div>
   )
 }
