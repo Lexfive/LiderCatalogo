@@ -9,7 +9,12 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'cdn.sanity.io', // Preparado para Sanity CMS
+        hostname: 'cdn.sanity.io',
+      },
+      {
+        // Supabase Storage — substitua pelo seu project ref
+        protocol: 'https',
+        hostname: '*.supabase.co',
       },
     ],
     // Formatos modernos para melhor performance

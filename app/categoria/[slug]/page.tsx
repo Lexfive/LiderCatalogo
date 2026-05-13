@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { getProductsByCategory, type ProductCategory } from '@/lib/products'
+import { getProductsByCategoryDB } from '@/lib/supabase/products-db'
+import type { ProductCategory } from '@/lib/products'
 import { CatalogClient } from '@/components/catalog/CatalogClient'
 import { buildMetadata } from '@/lib/metadata'
 
@@ -70,11 +71,32 @@ export async function generateMetadata({
   })
 }
 
-export default function CategoryPage({ params }: { params: { slug: string } }) {
+export const dynamic = 'force-dynamic'
+
+export default async function CategoryPage({ params }: { params: { slug: string } }) {
   const config = categoryConfig[params.slug]
   if (!config) notFound()
 
-  const products = getProductsByCategory(config.slug)
+  const rawProducts = await getProductsByCategoryDB(config.slug)
+  const products = rawProducts.map((p) => ({
+    id: p.id as unknown as number,
+    slug: p.slug, name: p.name,
+    category: p.category as ProductCategory,
+    styles: p.styles ?? [],
+    dimensions: { width: p.width_cm, height: p.height_cm, depth: p.depth_cm ?? undefined },
+    materials: p.materials ?? '',
+    finish: p.finish ?? [],
+    description: p.description ?? '',
+    fullDescription: p.full_description ?? '',
+    images: p.images ?? [],
+    thumbnailColor: ['#2d2520', '#4a3830'],
+    badge: p.badge ?? undefined,
+    featured: p.featured,
+    available: p.available,
+    deliveryDays: p.delivery_days ?? undefined,
+    marketplaceUrl: p.marketplace_url ?? undefined,
+    createdAt: p.created_at,
+  }))
 
   return (
     <>
