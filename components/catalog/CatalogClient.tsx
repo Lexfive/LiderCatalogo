@@ -7,7 +7,7 @@ import { type Product, type ProductCategory, type ProductStyle } from '@/lib/pro
 import { ProductCard } from '@/components/ui/ProductCard'
 import { cn } from '@/lib/utils'
 
-type SortOption = 'default' | 'price-asc' | 'price-desc' | 'name-asc' | 'newest'
+type SortOption = 'default' | 'name-asc' | 'newest'
 
 interface Filters {
   search: string
@@ -60,8 +60,6 @@ export function CatalogClient({ initialProducts, initialCategory }: CatalogClien
     if (filters.style) result = result.filter((p) => p.styles.includes(filters.style as ProductStyle))
 
     switch (filters.sort) {
-      case 'price-asc': result.sort((a, b) => a.price - b.price); break
-      case 'price-desc': result.sort((a, b) => b.price - a.price); break
       case 'name-asc': result.sort((a, b) => a.name.localeCompare(b.name, 'pt-BR')); break
       case 'newest': result.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()); break
     }
@@ -151,8 +149,6 @@ export function CatalogClient({ initialProducts, initialCategory }: CatalogClien
                              text-charcoal-600 outline-none focus:border-gold transition-colors sm:min-w-[170px]">
                   <option value="default">Ordenar por</option>
                   <option value="newest">Mais recentes</option>
-                  <option value="price-asc">Menor preço</option>
-                  <option value="price-desc">Maior preço</option>
                   <option value="name-asc">Nome A-Z</option>
                 </select>
 

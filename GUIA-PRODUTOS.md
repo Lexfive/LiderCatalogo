@@ -93,8 +93,8 @@ Role até o final do array `products = [...]` e adicione um novo produto.
   name: 'Nome do Produto',
   category: 'quadro',  // ← 'quadro', 'moldura' ou 'espelho'
   styles: ['minimalista'],  // ← veja lista abaixo
-  price: 350,  // ← preço em reais, sem R$
-  priceInstallments: 12,
+  // Sem preço — o site é uma vitrine institucional.
+  // Para venda direta, use marketplaceUrl abaixo.
   dimensions: {
     width: 60,   // largura em cm
     height: 80,  // altura em cm
@@ -110,6 +110,7 @@ Role até o final do array `products = [...]` e adicione um novo produto.
   featured: false,  // ← true = aparece na home
   available: true,
   deliveryDays: '7 a 15 dias úteis',
+  marketplaceUrl: '',  // ← link do Mercado Livre, Shopee, etc. (deixe '' se não tiver)
   createdAt: '2025-05-13',  // ← data de hoje
 },
 ```
@@ -192,6 +193,7 @@ Branco/off:      ['#f4f3ef', '#c8c4bb']
   featured: true,
   available: true,
   deliveryDays: '5 a 10 dias úteis',
+  marketplaceUrl: 'https://www.mercadolivre.com.br/seu-produto',  // opcional
   createdAt: '2025-05-13',
 },
 ```
@@ -245,7 +247,6 @@ git push
 - [ ] `id` é único (não repetido)
 - [ ] `slug` não tem espaços nem acentos
 - [ ] A pasta `public/images/products/slug/` existe com pelo menos `01.jpg`
-- [ ] `price` é um número inteiro (sem R$ ou ponto/vírgula)
 - [ ] `available: true` para aparecer no site
 
 ---

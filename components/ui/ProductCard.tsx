@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { type Product, formatPrice, getCategoryLabel } from '@/lib/products'
+import { type Product, getCategoryLabel } from '@/lib/products'
 
 interface ProductCardProps {
   product: Product
@@ -11,11 +11,13 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, priority = false }: ProductCardProps) {
-  const { slug, name, category, price, priceInstallments = 12, dimensions, images, thumbnailColor, badge } = product
-  const installmentValue = Math.round(price / priceInstallments)
+  const {
+    slug, name, category, dimensions,
+    images, thumbnailColor, badge,
+  } = product
 
   const placeholderStyle = {
-    background: `linear-gradient(150deg, ${thumbnailColor[0]}, ${thumbnailColor[1] || thumbnailColor[0]})`,
+    background: `linear-gradient(150deg, ${thumbnailColor[0]}, ${thumbnailColor[1] ?? thumbnailColor[0]})`,
   }
 
   return (
@@ -29,9 +31,9 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
                    shadow-sm hover:shadow-md transition-shadow duration-300"
         aria-label={`Ver detalhes de ${name}`}
       >
-        {/* Imagem */}
+        {/* ── Imagem ─────────────────────────────────────────────────── */}
         <div className="product-img-wrap">
-          {images[0] && images[0] !== '/images/products/placeholder.jpg' ? (
+          {images[0] ? (
             <Image
               src={images[0]}
               alt={`${name} — ${getCategoryLabel(category)}`}
@@ -41,51 +43,51 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
               priority={priority}
             />
           ) : (
+            /* Placeholder elegante enquanto não há foto */
             <div
-              className="absolute inset-0 product-img-zoom flex items-center justify-center"
+              className="absolute inset-0 product-img-zoom flex flex-col items-center justify-center gap-3"
               style={placeholderStyle}
               aria-hidden="true"
             >
-              {/* Ícone placeholder elegante */}
-              <div className="text-center opacity-20">
-                <div className="w-14 h-14 border border-white/60 mx-auto mb-2" />
-                <p className="text-white text-[0.6rem] tracking-[0.15em] uppercase">Foto em breve</p>
-              </div>
+              <div className="w-12 h-12 border border-white/25 rounded-sm" />
+              <span className="text-white/40 text-[0.58rem] tracking-[0.18em] uppercase font-sans">
+                Foto em breve
+              </span>
             </div>
           )}
 
           {/* Badge */}
           {badge && (
-            <span className="absolute top-3 left-3 bg-gold text-white
-                             text-[0.58rem] tracking-[0.1em] uppercase px-2.5 py-1 z-10 font-sans">
+            <span className="absolute top-3 left-3 z-10
+                             bg-gold text-white font-sans
+                             text-[0.58rem] tracking-[0.1em] uppercase px-2.5 py-1">
               {badge}
             </span>
           )}
 
-          {/* Overlay de hover */}
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-400 z-[1]" />
+          {/* Hover overlay suave */}
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5
+                          transition-colors duration-400 z-[1]" />
         </div>
 
-        {/* Info */}
+        {/* ── Info ───────────────────────────────────────────────────── */}
         <div className="p-4 pb-5">
+          {/* Categoria */}
           <p className="text-[0.6rem] tracking-[0.18em] uppercase text-gold font-sans mb-1">
             {getCategoryLabel(category)}
           </p>
-          <h3 className="font-serif text-[1.05rem] font-normal leading-snug mb-1.5 text-charcoal
-                         group-hover:text-charcoal-600 transition-colors line-clamp-2">
+
+          {/* Nome */}
+          <h3 className="font-serif text-[1.05rem] font-normal leading-snug mb-2
+                         text-charcoal group-hover:text-charcoal-600 transition-colors
+                         line-clamp-2">
             {name}
           </h3>
-          <p className="text-[0.7rem] text-charcoal-300 tracking-wide mb-2.5">
+
+          {/* Dimensões */}
+          <p className="text-[0.7rem] text-charcoal-300 tracking-wide">
             {dimensions.width} × {dimensions.height} cm
           </p>
-          <div className="flex items-baseline justify-between flex-wrap gap-1">
-            <p className="font-serif text-[1.25rem] font-light text-charcoal">
-              {formatPrice(price)}
-            </p>
-            <p className="font-sans text-[0.65rem] text-charcoal-400 font-light">
-              {priceInstallments}× {formatPrice(installmentValue)}
-            </p>
-          </div>
         </div>
       </Link>
     </motion.div>
