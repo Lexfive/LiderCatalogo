@@ -49,7 +49,6 @@ export default function AboutPage() {
   return (
     <>
       <div className="pt-[72px]">
-        {/* Seção principal */}
         <section className="section">
           <div className="container-elite">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24 items-center">

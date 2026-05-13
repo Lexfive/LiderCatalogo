@@ -17,7 +17,7 @@ export default function CatalogPage() {
     <>
       {/* Cabeçalho da página */}
       <div className="bg-cream-100 border-b border-charcoal-200 pt-[72px]">
-        <div className="container-elite section pb-10">
+        <div className="container-elite px-5 sm:px-8 md:px-12 lg:px-16 pt-10 pb-8">
           <span className="section-tag">Coleção Completa</span>
           <h1 className="font-serif text-display-lg font-light text-charcoal mb-4">
             Nosso <em>Catálogo</em>

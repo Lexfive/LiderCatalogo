@@ -23,19 +23,14 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const pathname = usePathname()
 
-  // Detecta scroll para mudar background da navbar
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Fecha menu mobile ao navegar
-  useEffect(() => {
-    setMobileOpen(false)
-  }, [pathname])
+  useEffect(() => { setMobileOpen(false) }, [pathname])
 
-  // Trava o scroll quando menu mobile está aberto
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
@@ -48,10 +43,12 @@ export function Navbar() {
       <header
         role="banner"
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 h-[72px] flex items-center justify-between px-6 md:px-12 lg:px-16',
+          'fixed top-0 left-0 right-0 z-50 h-[72px]',
+          'flex items-center justify-between',
+          'px-5 sm:px-8 md:px-12 lg:px-16',
           'transition-all duration-400 ease-luxury',
           scrolled || !isHome
-            ? 'bg-cream/95 backdrop-blur-nav border-b border-charcoal-200 shadow-sm'
+            ? 'bg-cream/96 backdrop-blur-sm border-b border-charcoal-200/70 shadow-sm'
             : 'bg-transparent'
         )}
       >
@@ -60,7 +57,7 @@ export function Navbar() {
           href="/"
           aria-label="Líder Molduras — Página inicial"
           className={cn(
-            'font-serif text-2xl font-light tracking-[0.12em]',
+            'font-serif text-[1.35rem] font-light tracking-[0.1em] shrink-0',
             'transition-colors duration-300',
             scrolled || !isHome ? 'text-charcoal' : 'text-white'
           )}
@@ -68,17 +65,21 @@ export function Navbar() {
           Líder<span className="text-gold">Molduras</span>
         </Link>
 
-        {/* Links desktop */}
-        <nav aria-label="Navegação principal" className="hidden lg:flex items-center gap-8">
+        {/* Links desktop — só aparece em telas grandes */}
+        <nav
+          aria-label="Navegação principal"
+          className="hidden xl:flex items-center gap-7"
+        >
           {navLinks.map(({ href, label }) => (
             <Link
               key={href}
               href={href}
               className={cn(
-                'text-[0.72rem] tracking-[0.14em] uppercase font-sans font-light',
-                'transition-colors duration-300',
-                'hover:text-gold',
-                pathname === href ? 'text-gold' : scrolled || !isHome ? 'text-charcoal-600' : 'text-white/80'
+                'text-[0.7rem] tracking-[0.12em] uppercase font-sans font-normal',
+                'transition-colors duration-300 hover:text-gold',
+                pathname === href
+                  ? 'text-gold'
+                  : scrolled || !isHome ? 'text-charcoal-600' : 'text-white/80'
               )}
             >
               {label}
@@ -90,23 +91,24 @@ export function Navbar() {
         <Link
           href="/contato"
           className={cn(
-            'hidden lg:inline-flex text-[0.72rem] tracking-[0.12em] uppercase font-sans',
-            'px-5 py-2.5 border transition-all duration-300',
+            'hidden xl:inline-flex',
+            'text-[0.68rem] tracking-[0.12em] uppercase font-sans',
+            'px-5 py-2.5 border transition-all duration-300 shrink-0',
             scrolled || !isHome
               ? 'border-charcoal text-charcoal hover:bg-charcoal hover:text-white'
               : 'border-white/50 text-white hover:border-gold-light hover:text-gold-light'
           )}
         >
-          Solicitar Orçamento
+          Orçamento
         </Link>
 
-        {/* Botão hamburger (mobile) */}
+        {/* Hamburger */}
         <button
           onClick={() => setMobileOpen(true)}
           aria-label="Abrir menu"
           aria-expanded={mobileOpen}
           className={cn(
-            'lg:hidden p-2 -mr-2',
+            'xl:hidden p-2 -mr-2 transition-colors',
             scrolled || !isHome ? 'text-charcoal' : 'text-white'
           )}
         >
@@ -114,71 +116,66 @@ export function Navbar() {
         </button>
       </header>
 
-      {/* Menu mobile com animação */}
+      {/* Menu mobile */}
       <AnimatePresence>
         {mobileOpen && (
           <>
-            {/* Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-black/40 z-[60] lg:hidden"
+              transition={{ duration: 0.25 }}
+              className="fixed inset-0 bg-black/50 z-[60] xl:hidden"
               onClick={() => setMobileOpen(false)}
             />
-
-            {/* Drawer */}
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ type: 'tween', duration: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="fixed right-0 top-0 bottom-0 w-[min(320px,90vw)] bg-white z-[70] flex flex-col"
+              transition={{ type: 'tween', duration: 0.32, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="fixed right-0 top-0 bottom-0 w-[min(300px,88vw)] bg-white z-[70]
+                         flex flex-col shadow-2xl"
               aria-modal="true"
               role="dialog"
               aria-label="Menu de navegação"
             >
               {/* Header do drawer */}
-              <div className="flex items-center justify-between px-8 h-[72px] border-b border-charcoal-200">
-                <Link href="/" className="font-serif text-xl font-light tracking-wide">
+              <div className="flex items-center justify-between px-7 h-[72px] border-b border-charcoal-200">
+                <Link href="/" className="font-serif text-[1.25rem] font-light tracking-[0.08em]"
+                  onClick={() => setMobileOpen(false)}>
                   Líder<span className="text-gold">Molduras</span>
                 </Link>
-                <button
-                  onClick={() => setMobileOpen(false)}
-                  aria-label="Fechar menu"
-                  className="p-2 -mr-2 text-charcoal hover:text-gold transition-colors"
-                >
+                <button onClick={() => setMobileOpen(false)} aria-label="Fechar menu"
+                  className="p-2 -mr-2 text-charcoal hover:text-gold transition-colors">
                   <X size={20} />
                 </button>
               </div>
 
               {/* Links */}
-              <nav className="flex flex-col px-8 py-10 gap-6 flex-1" aria-label="Menu mobile">
+              <nav className="flex flex-col px-7 py-8 gap-1 flex-1 overflow-y-auto"
+                aria-label="Menu mobile">
                 {navLinks.map(({ href, label }, i) => (
-                  <motion.div
-                    key={href}
-                    initial={{ opacity: 0, x: 20 }}
+                  <motion.div key={href}
+                    initial={{ opacity: 0, x: 16 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.05 * i, duration: 0.3 }}
-                  >
-                    <Link
-                      href={href}
+                    transition={{ delay: 0.04 * i, duration: 0.25 }}>
+                    <Link href={href}
                       className={cn(
-                        'font-serif text-2xl font-light block',
+                        'block py-3 font-serif text-[1.35rem] font-light',
+                        'border-b border-charcoal-200/50',
                         'transition-colors duration-200 hover:text-gold',
                         pathname === href ? 'text-gold' : 'text-charcoal'
-                      )}
-                    >
+                      )}>
                       {label}
                     </Link>
                   </motion.div>
                 ))}
               </nav>
 
-              {/* CTA no drawer */}
-              <div className="px-8 pb-10">
-                <Link href="/contato" className="btn-primary w-full justify-center">
+              {/* CTA */}
+              <div className="px-7 py-6 border-t border-charcoal-200">
+                <Link href="/contato" onClick={() => setMobileOpen(false)}
+                  className="btn-primary w-full">
                   Solicitar Orçamento
                 </Link>
               </div>
