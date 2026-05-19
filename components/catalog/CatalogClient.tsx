@@ -57,7 +57,7 @@ export function CatalogClient({ initialProducts, initialCategory }: CatalogClien
       )
     }
     if (filters.category) result = result.filter((p) => p.category === filters.category)
-    if (filters.style) result = result.filter((p) => p.styles.includes(filters.style as ProductStyle))
+    if (filters.style) result = result.filter((p) => p.styles.includes(filters.style))
 
     switch (filters.sort) {
       case 'name-asc': result.sort((a, b) => a.name.localeCompare(b.name, 'pt-BR')); break

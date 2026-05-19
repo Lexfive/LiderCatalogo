@@ -55,10 +55,10 @@ export interface Product {
   slug: string                   // URL amigável, único, kebab-case
   name: string                   // Nome de exibição
   category: ProductCategory      // quadro | moldura | espelho
-  styles: ProductStyle[]         // Tags de estilo (para filtros)
+  styles: string[]               // Tags de estilo (para filtros) — aceita ProductStyle ou string do Supabase
   dimensions: ProductDimensions  // Dimensões em cm
   materials: string              // Descrição dos materiais
-  finish: ProductFinish[]        // Tipos de acabamento
+  finish: string[]               // Tipos de acabamento — aceita ProductFinish ou string do Supabase
   description: string            // Descrição curta — aparece nos cards
   fullDescription: string        // Descrição completa — página do produto
   images: string[]               // Caminhos em /public/ — ex: ['/images/products/slug/01.jpg']
