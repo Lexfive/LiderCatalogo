@@ -1,32 +1,28 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    // Domínios externos permitidos para imagens (adicione conforme necessário)
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'cdn.sanity.io',
-      },
-      {
-        protocol: 'https',
-        hostname: '*.supabase.co',
-      },
-      {
-        // Mapa estático OpenStreetMap (fallback sem Google Maps API key)
-        protocol: 'https',
-        hostname: 'staticmap.openstreetmap.de',
-      },
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+      { protocol: 'https', hostname: 'cdn.sanity.io' },
+      { protocol: 'https', hostname: '*.supabase.co' },
+      { protocol: 'https', hostname: 'staticmap.openstreetmap.de' },
     ],
-    // Formatos modernos para melhor performance
     formats: ['image/avif', 'image/webp'],
   },
-  // Otimizações de performance
   compress: true,
   poweredByHeader: false,
+
+  // Resolve erro "@opentelemetry/api" no bundler de Edge Functions do Netlify.
+  // Essa dependência é puxada indiretamente pelo @supabase/ssr no middleware.
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      config.externals = [
+        ...(Array.isArray(config.externals) ? config.externals : []),
+        '@opentelemetry/api',
+      ]
+    }
+    return config
+  },
 }
 
 module.exports = nextConfig

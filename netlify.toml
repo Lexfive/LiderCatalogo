@@ -37,9 +37,6 @@
 # Netlify Forms — backend gratuito de formulário
 # Ativado pelo atributo data-netlify="true" no <form>. Sem config extra aqui.
 
-# Edge Functions — marcar dependências problemáticas como externas
+# Ignorar @opentelemetry/api nas Node functions (dependência indireta do Supabase)
 [functions]
   external_node_modules = ["@opentelemetry/api"]
-
-[edge_functions]
-  external_dependencies = ["@opentelemetry/api"]
