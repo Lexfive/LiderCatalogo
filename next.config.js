@@ -12,17 +12,9 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
 
-  // Resolve erro "@opentelemetry/api" no bundler de Edge Functions do Netlify.
-  // Essa dependência é puxada indiretamente pelo @supabase/ssr no middleware.
-  webpack: (config, { isServer }) => {
-    if (isServer) {
-      config.externals = [
-        ...(Array.isArray(config.externals) ? config.externals : []),
-        '@opentelemetry/api',
-      ]
-    }
-    return config
-  },
+  // Resolve erro "@opentelemetry/api" puxado indiretamente pelo @supabase/ssr.
+  // serverExternalPackages exclui o pacote do bundle server/middleware no Next.js 14.
+  serverExternalPackages: ['@opentelemetry/api'],
 }
 
 module.exports = nextConfig
