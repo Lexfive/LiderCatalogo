@@ -8,7 +8,7 @@ import { generateSlug, uploadProductImage, deleteProductImage } from '@/lib/supa
 import { cn } from '@/lib/utils'
 import type { ProductRow } from '@/lib/supabase/types'
 import {
-  ImagePlus, X, GripVertical, Loader2, Save,
+  ImagePlus, X, Loader2, Save,
   AlertCircle, CheckCircle2,
 } from 'lucide-react'
 
@@ -166,7 +166,7 @@ function Textarea({ className, ...props }: React.TextareaHTMLAttributes<HTMLText
 }
 
 function TagCheckbox({
-  value: _value, label, checked, onChange,
+  label, checked, onChange,
 }: {
   value: string; label: string; checked: boolean; onChange: () => void
 }) {
