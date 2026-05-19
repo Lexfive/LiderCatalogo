@@ -51,7 +51,7 @@ export interface ProductDimensions {
 }
 
 export interface Product {
-  id: number
+  id: string | number  // number nos dados estáticos, string (UUID) quando vindo do Supabase
   slug: string                   // URL amigável, único, kebab-case
   name: string                   // Nome de exibição
   category: ProductCategory      // quadro | moldura | espelho
@@ -444,7 +444,7 @@ export function getFeaturedProducts(): Product[] {
 }
 
 /** Retorna produtos relacionados (mesma categoria, excluindo o atual) */
-export function getRelatedProducts(currentId: number, category: ProductCategory, limit = 4): Product[] {
+export function getRelatedProducts(currentId: number | string, category: ProductCategory, limit = 4): Product[] {
   return products
     .filter((p) => p.category === category && p.id !== currentId && p.available)
     .slice(0, limit)
