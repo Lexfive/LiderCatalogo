@@ -34,7 +34,7 @@ function TikTokIcon({ size = 16 }: { size?: number }) {
 
 export function Footer() {
   const year = new Date().getFullYear()
-  const wppNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5531710587900'
+  const wppNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? ''
   const email = process.env.NEXT_PUBLIC_EMAIL || 'liderquadrosemolduras@gmail.com'
 
   return (

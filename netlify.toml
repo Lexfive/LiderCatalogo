@@ -36,3 +36,10 @@
 
 # Netlify Forms — backend gratuito de formulário
 # Ativado pelo atributo data-netlify="true" no <form>. Sem config extra aqui.
+
+# Edge Functions — marcar dependências problemáticas como externas
+[functions]
+  external_node_modules = ["@opentelemetry/api"]
+
+[edge_functions]
+  external_dependencies = ["@opentelemetry/api"]

@@ -23,7 +23,7 @@ const jost = Jost({
 
 // ─── METADATA GLOBAL ──────────────────────────────────────────────────────────
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://lidermolduras.com.br'),
   title: {
     template: '%s | Líder Molduras',
     default: 'Líder Molduras — Quadros, Molduras & Espelhos Premium',

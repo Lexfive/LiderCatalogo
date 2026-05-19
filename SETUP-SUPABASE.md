@@ -56,7 +56,7 @@ NEXT_PUBLIC_SUPABASE_URL=https://SEU_PROJECT_ID.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGci...
 SUPABASE_SERVICE_ROLE_KEY=eyJhbGci...
 
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_PUBLIC_SITE_URL=https://seu-dominio.netlify.app
 NEXT_PUBLIC_WHATSAPP_NUMBER=5531999990000
 NEXT_PUBLIC_EMAIL=atendimento@lidermolduras.com.br
 ```
@@ -87,9 +87,9 @@ npm run dev
 ```
 
 Acesse:
-- Site: http://localhost:3000
-- Admin login: http://localhost:3000/admin/login
-- Admin painel: http://localhost:3000/admin/produtos
+- Site: http://localhost:3000  (em dev local)
+- Admin: http://localhost:3000/admin/login
+- Painel: http://localhost:3000/admin/produtos
 
 ---
 

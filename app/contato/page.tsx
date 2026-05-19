@@ -14,7 +14,7 @@ export const metadata: Metadata = buildMetadata({
 })
 
 // Dados de contato reais
-const WHATSAPP = '5531710587900'
+const WHATSAPP = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? ''
 const EMAIL = 'liderquadrosemolduras@gmail.com'
 const ADDRESS = 'R. José Félix Martins, 713 - Mantiqueira, Belo Horizonte - MG, 31660-100'
 const MAPS_EMBED_URL = `https://www.google.com/maps/embed/v1/place?key=${
