@@ -12,9 +12,13 @@ const nextConfig = {
         hostname: 'cdn.sanity.io',
       },
       {
-        // Supabase Storage — substitua pelo seu project ref
         protocol: 'https',
         hostname: '*.supabase.co',
+      },
+      {
+        // Mapa estático OpenStreetMap (fallback sem Google Maps API key)
+        protocol: 'https',
+        hostname: 'staticmap.openstreetmap.de',
       },
     ],
     // Formatos modernos para melhor performance

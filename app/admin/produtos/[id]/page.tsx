@@ -24,14 +24,16 @@ export default async function EditarProdutoPage({
     .eq('id', params.id)
     .single()
 
-  if (!product) notFound()
+  // Cast explícito — resolve "Property 'name' does not exist on type 'never'"
+  // O Supabase retorna null quando não encontra, que já é tratado pelo notFound()
+  const typedProduct = product as ProductRow | null
+  if (!typedProduct) notFound()
 
   return (
     <div className="flex flex-col min-h-screen">
       <AdminNav userEmail={user?.email} />
 
       <main className="flex-1 px-5 sm:px-8 py-8 max-w-[1280px] mx-auto w-full">
-        {/* Cabeçalho */}
         <div className="flex items-center gap-4 mb-8">
           <Link href="/admin/produtos"
             className="text-[#9E9A91] hover:text-[#0A0A0A] transition-colors">
@@ -42,15 +44,15 @@ export default async function EditarProdutoPage({
               Editar produto
             </h1>
             <p className="text-sm text-[#9E9A91] mt-0.5">
-              {product.name}
-              {product.sku && (
-                <span className="ml-2 font-mono text-[#C8C4BB]">{product.sku}</span>
+              {typedProduct.name}
+              {typedProduct.sku && (
+                <span className="ml-2 font-mono text-[#C8C4BB]">{typedProduct.sku}</span>
               )}
             </p>
           </div>
         </div>
 
-        <ProductForm product={product as ProductRow} />
+        <ProductForm product={typedProduct} />
       </main>
     </div>
   )

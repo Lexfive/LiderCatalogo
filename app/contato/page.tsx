@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { buildMetadata } from '@/lib/metadata'
 import { ContactForm } from '@/components/sections/ContactForm'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
@@ -125,14 +126,12 @@ export default function ContactPage() {
                     aria-label="Abrir no Google Maps"
                   >
                     {/* Mini mapa estático via OpenStreetMap (sem API key) */}
-                    <img
+                    <Image
                       src={`https://staticmap.openstreetmap.de/staticmap.php?center=-19.826,-43.958&zoom=16&size=600x250&markers=-19.826,-43.958,red-pushpin`}
                       alt="Mapa Líder Molduras"
+                      width={600}
+                      height={250}
                       className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity"
-                      onError={(e) => {
-                        const el = e.currentTarget as HTMLImageElement
-                        el.style.display = 'none'
-                      }}
                     />
                     <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-cream-100/70">
                       <MapPin size={28} className="text-gold" />

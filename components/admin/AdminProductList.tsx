@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { Pencil, Eye, EyeOff, Star, Trash2, ExternalLink } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -30,7 +29,6 @@ export function AdminProductList({ products: initial }: { products: ProductSumma
   const [products, setProducts] = useState(initial)
   const [loading, setLoading] = useState<string | null>(null) // id do produto em loading
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null)
-  const router = useRouter()
   const supabase = createClient()
 
   // Toggle disponibilidade

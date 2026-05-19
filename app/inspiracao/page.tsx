@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { buildMetadata } from '@/lib/metadata'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
-import { SectionHeader } from '@/components/ui/SectionHeader'
 import { CtaBanner } from '@/components/sections/CtaBanner'
 
 export const metadata: Metadata = buildMetadata({

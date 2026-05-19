@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils'
 import type { ProductRow } from '@/lib/supabase/types'
 import {
   ImagePlus, X, GripVertical, Loader2, Save,
-  AlertCircle, CheckCircle2, ChevronDown,
+  AlertCircle, CheckCircle2,
 } from 'lucide-react'
 
 // ─── Opções dos campos ────────────────────────────────────────────────────────
@@ -166,7 +166,7 @@ function Textarea({ className, ...props }: React.TextareaHTMLAttributes<HTMLText
 }
 
 function TagCheckbox({
-  value, label, checked, onChange,
+  value: _value, label, checked, onChange,
 }: {
   value: string; label: string; checked: boolean; onChange: () => void
 }) {
@@ -561,6 +561,7 @@ export function ProductForm({ product }: ProductFormProps) {
               <div className="grid grid-cols-3 gap-2 mt-3">
                 {images.map((url, i) => (
                   <div key={url} className="relative group aspect-square bg-[#F4F3EF] overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={url} alt={`Foto ${i + 1}`}
                       className="w-full h-full object-cover" />
                     {i === 0 && (

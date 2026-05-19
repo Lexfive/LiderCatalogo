@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import { LayoutGrid, PlusCircle, LogOut, ChevronDown } from 'lucide-react'
+import { LayoutGrid, PlusCircle, LogOut } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const navItems = [
