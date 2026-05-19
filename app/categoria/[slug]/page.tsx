@@ -79,7 +79,7 @@ export default async function CategoryPage({ params }: { params: { slug: string 
 
   const rawProducts = await getProductsByCategoryDB(config.slug)
   const products = rawProducts.map((p) => ({
-    id: p.id,
+    id: p.id as unknown as number,
     slug: p.slug, name: p.name,
     category: p.category as ProductCategory,
     styles: p.styles ?? [],

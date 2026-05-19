@@ -1,12 +1,12 @@
 # ─── NETLIFY CONFIG ─────────────────────────────────────────────────────────────
-# O plugin @netlify/plugin-nextjs usa o build do Next em .next.
-# Definir explicitamente evita que o painel do Netlify resolva a raiz do repo
-# como publish directory, o que quebra o plugin.
+# O plugin @netlify/plugin-nextjs gerencia publish directory automaticamente
+# no modo SSR/ISR. NÃO defina publish = ".next" nesse caso — gera conflito.
+# Exceção: se usar `output: 'export'` (estático), use publish = "out".
 # ────────────────────────────────────────────────────────────────────────────────
 
 [build]
   command = "npm run build"
-  publish = ".next"
+  # publish omitido: gerenciado pelo plugin Next.js
 
 [build.environment]
   NODE_VERSION = "20"

@@ -137,7 +137,7 @@ export function ContactFormNetlify() {
           <input
             id="nl-phone" name="phone" type="tel"
             value={form.phone} onChange={(e) => update('phone', e.target.value)}
-            placeholder="(XX) 9 9999-0000" autoComplete="tel"
+            placeholder="(31) 7105-8790" autoComplete="tel"
             className="form-input"
           />
         </div>

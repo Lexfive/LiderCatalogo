@@ -1,14 +1,16 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { buildMetadata } from '@/lib/metadata'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { CtaBanner } from '@/components/sections/CtaBanner'
+import { Instagram } from 'lucide-react'
 
 export const metadata: Metadata = buildMetadata({
   title: 'Sobre a Marca',
   description:
-    'Conheça a história da Líder Molduras, nossa filosofia de curadoria, proposta de valor e os diferenciais que nos tornam referência em decoração premium no Brasil.',
+    'Conheça Marcos Pereira, fundador da Líder Molduras, e a história de uma empresa que transforma ambientes com quadros decorativos, molduras e espelhos de alto padrão.',
   path: '/sobre',
 })
 
@@ -49,46 +51,62 @@ export default function AboutPage() {
   return (
     <>
       <div className="pt-[72px]">
+
+        {/* ── Seção do Fundador ─────────────────────────────────────────── */}
         <section className="section">
           <div className="container-elite">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24 items-center">
-              {/* Imagem / Visual */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 xl:gap-20 items-center">
+
+              {/* Foto do Marcos */}
               <AnimatedSection direction="left" className="relative">
-                {/* Imagem principal (placeholder) */}
-                <div
-                  className="w-full aspect-[3/4] relative"
-                  style={{ background: 'linear-gradient(135deg, #2d2520, #4a3830)' }}
-                  aria-label="Ambiente decorado com peças Líder Molduras"
-                >
-                  <div className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
-                    <div className="w-1/2 h-2/3 border border-gold/30" />
-                  </div>
-                  {/* Quote overlay */}
-                  <div className="absolute bottom-6 left-6 right-6">
-                    <div className="border border-gold/30 p-6">
-                      <blockquote className="font-serif text-lg font-light italic text-white/80 leading-relaxed">
-                        &ldquo;Acreditamos que cada ambiente merece ser habitado com beleza e
-                        intenção.&rdquo;
-                      </blockquote>
-                      <cite className="block mt-3 text-[0.65rem] tracking-[0.2em] uppercase text-gold not-italic">
-                        — Fundadoras, Líder Molduras
-                      </cite>
-                    </div>
+                <div className="relative w-full aspect-[3/4] overflow-hidden">
+                  <Image
+                    src="/images/marcos-pereira.png"
+                    alt="Marcos Pereira — Fundador da Líder Molduras"
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                  />
+                  {/* Overlay sutil na parte inferior */}
+                  <div className="absolute bottom-0 left-0 right-0 h-1/3
+                                  bg-gradient-to-t from-black/60 to-transparent" />
+
+                  {/* Nome sobre a foto */}
+                  <div className="absolute bottom-0 left-0 right-0 p-7">
+                    <p className="font-serif text-2xl font-light text-white leading-tight">
+                      Marcos Pereira
+                    </p>
+                    <p className="text-[0.68rem] tracking-[0.22em] uppercase text-gold-light mt-1">
+                      Fundador · Líder Molduras
+                    </p>
+                    <a
+                      href="https://www.instagram.com/marcospereira.ecommerce/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Instagram de Marcos Pereira"
+                      className="inline-flex items-center gap-1.5 mt-3
+                                 text-white/50 hover:text-gold-light transition-colors duration-300
+                                 text-[0.72rem] tracking-wide"
+                    >
+                      <Instagram size={13} />
+                      @marcospereira.ecommerce
+                    </a>
                   </div>
                 </div>
 
                 {/* Elementos decorativos */}
                 <div
-                  className="absolute -top-6 -right-6 w-[55%] aspect-square bg-gold-pale -z-10"
+                  className="absolute -top-5 -right-5 w-[45%] aspect-square bg-gold-pale -z-10"
                   aria-hidden="true"
                 />
                 <div
-                  className="absolute -bottom-6 -left-6 w-[45%] h-[35%] bg-cream-200 -z-10"
+                  className="absolute -bottom-5 -left-5 w-[35%] h-[30%] bg-cream-200 -z-10"
                   aria-hidden="true"
                 />
               </AnimatedSection>
 
-              {/* Texto */}
+              {/* Texto da empresa + fundador */}
               <AnimatedSection delay={0.15}>
                 <SectionHeader
                   tag="Nossa História"
@@ -96,12 +114,18 @@ export default function AboutPage() {
                 />
 
                 <div className="space-y-4 text-charcoal-600 text-sm leading-relaxed mb-10">
+                  {/* Parágrafo sobre o Marcos */}
                   <p>
-                    Fundada em 2016 por duas artistas apaixonadas por design de interiores, a
-                    Líder Molduras nasceu da vontade de trazer ao mercado brasileiro peças com o
-                    refinamento das melhores casas europeias — mas com alma e identidade
-                    genuinamente nossas.
+                    A Líder Molduras foi fundada por{' '}
+                    <strong className="text-charcoal font-medium">Marcos Pereira</strong>,
+                    empreendedor com trajetória sólida no e-commerce e uma visão clara: levar
+                    arte decorativa de qualidade para lares e espaços de todo o Brasil. Com
+                    experiência no mercado digital e paixão por estética, Marcos construiu a
+                    Líder Molduras como um negócio que une curadoria refinada, atendimento
+                    próximo e operação eficiente.
                   </p>
+
+                  {/* Textos mantidos conforme solicitado */}
                   <p>
                     Cada peça do nosso catálogo é selecionada com critério rigoroso: materiais
                     nobres, acabamentos artesanais e um design intemporal que dialoga com
@@ -114,6 +138,17 @@ export default function AboutPage() {
                     Em todos os casos, a resposta é a mesma: atenção ao detalhe, paixão pelo
                     belo e compromisso com a excelência.
                   </p>
+                </div>
+
+                {/* Quote do fundador */}
+                <div className="border-l-2 border-gold pl-5 mb-10">
+                  <blockquote className="font-serif text-lg font-light italic text-charcoal-600 leading-relaxed">
+                    &ldquo;Acreditamos que cada ambiente merece ser habitado com beleza
+                    e intenção.&rdquo;
+                  </blockquote>
+                  <cite className="block mt-2 text-[0.65rem] tracking-[0.2em] uppercase text-gold not-italic">
+                    — Marcos Pereira, Fundador
+                  </cite>
                 </div>
 
                 <div className="flex flex-wrap gap-4">
@@ -129,18 +164,18 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Números */}
+        {/* ── Números ──────────────────────────────────────────────────────── */}
         <section className="section bg-charcoal" aria-label="Números da empresa">
           <div className="container-elite">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
-                { value: '8+', label: 'Anos de experiência' },
-                { value: '2.400+', label: 'Clientes atendidos' },
-                { value: '500+', label: 'Produtos curados' },
+                { value: 'BH', label: 'Belo Horizonte, MG' },
+                { value: 'BR', label: 'Entrega em todo o Brasil' },
                 { value: '100%', label: 'Artesanal' },
+                { value: '★★★★★', label: 'Satisfação dos clientes' },
               ].map(({ value, label }) => (
                 <AnimatedSection key={label} className="text-center">
-                  <strong className="block font-serif text-5xl font-light text-white mb-2">
+                  <strong className="block font-serif text-4xl font-light text-white mb-2">
                     {value}
                   </strong>
                   <span className="text-[0.65rem] tracking-[0.18em] uppercase text-white/40 font-sans">
@@ -152,7 +187,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Valores */}
+        {/* ── Diferenciais ─────────────────────────────────────────────────── */}
         <section className="section" aria-labelledby="values-heading">
           <div className="container-elite">
             <AnimatedSection>
@@ -177,6 +212,7 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
+
       </div>
 
       <CtaBanner />

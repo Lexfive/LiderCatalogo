@@ -130,7 +130,7 @@ export function ContactForm() {
             type="tel"
             value={form.phone}
             onChange={(e) => update('phone', e.target.value)}
-            placeholder="(XX) 9 9999-0000"
+            placeholder="(31) 7105-8790"
             autoComplete="tel"
             className="form-input"
           />

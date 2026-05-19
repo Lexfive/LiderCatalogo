@@ -1,0 +1,17 @@
+IMAGENS DAS CATEGORIAS — Líder Molduras
+==========================================
+
+Coloque aqui 3 fotos para os cards de categoria da página inicial:
+
+  quadros.jpg   → foto de um quadro decorativo ou ambiente com quadros
+  molduras.jpg  → foto de uma moldura ou parede com molduras
+  espelhos.jpg  → foto de um espelho decorativo ou ambiente com espelho
+
+ESPECIFICAÇÕES RECOMENDADAS:
+  Proporção: 3:4 (retrato) — ex: 600×800px ou 800×1067px
+  Formato:   JPG (85% qualidade) ou WebP
+  Tamanho:   máx. 300KB por arquivo
+
+ENQUANTO NÃO HÁ FOTOS:
+  Os cards exibem um gradiente escuro elegante como placeholder.
+  O site funciona normalmente.

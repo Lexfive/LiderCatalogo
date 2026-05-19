@@ -1,0 +1,21 @@
+IMAGENS DE INSPIRAÇÃO — Líder Molduras
+========================================
+
+Coloque aqui 5 fotos de ambientes decorados com suas peças:
+
+  sala.jpg        → Sala de estar com quadros / espelho grande
+  quarto.jpg      → Quarto com moldura acima da cama
+  escritorio.jpg  → Home office com quadro ao fundo
+  hall.jpg        → Hall de entrada com espelho + consola
+  lavabo.jpg      → Lavabo com espelho de moldura elaborada
+
+ESPECIFICAÇÕES RECOMENDADAS:
+  Proporção: 4:3 (paisagem) — ex: 1000×750px ou 1200×900px
+  Formato:   JPG (85% qualidade) ou WebP
+  Tamanho:   máx. 400KB por arquivo
+
+DICA:
+  Tire fotos de:
+  - Clientes que já compraram (com autorização)
+  - Seu próprio showroom
+  - Montagens feitas por você em ambiente decorado

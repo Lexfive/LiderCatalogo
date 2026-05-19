@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import { buildMetadata } from '@/lib/metadata'
 import { AnimatedSection } from '@/components/ui/AnimatedSection'
+import { SectionHeader } from '@/components/ui/SectionHeader'
 import { CtaBanner } from '@/components/sections/CtaBanner'
 
 export const metadata: Metadata = buildMetadata({
@@ -13,19 +13,9 @@ export const metadata: Metadata = buildMetadata({
 
 const rooms = [
   { gradient: 'linear-gradient(135deg, #2d2520, #4a3830)', label: 'Sala de Estar Contemporânea', tag: 'Sala' },
-  {
-    gradient: 'linear-gradient(135deg, #1a2028, #2e3a48)',
-    image: '/images/inspiracao/escritorio-premium.png',
-    label: 'Escritório Premium',
-    tag: 'Home Office',
-  },
+  { gradient: 'linear-gradient(135deg, #1a2028, #2e3a48)', label: 'Escritório Premium', tag: 'Home Office' },
   { gradient: 'linear-gradient(135deg, #1e2820, #2e4038)', label: 'Quarto Master Sofisticado', tag: 'Quarto' },
-  {
-    gradient: 'linear-gradient(135deg, #282018, #3a3020)',
-    image: '/images/inspiracao/hall-entrada-elegante.png',
-    label: 'Hall de Entrada Elegante',
-    tag: 'Hall',
-  },
+  { gradient: 'linear-gradient(135deg, #282018, #3a3020)', label: 'Hall de Entrada Elegante', tag: 'Hall' },
   { gradient: 'linear-gradient(135deg, #201828, #302840)', label: 'Lavabo Minimalista', tag: 'Lavabo' },
   { gradient: 'linear-gradient(135deg, #182028, #283848)', label: 'Sala de Jantar Clássica', tag: 'Sala de Jantar' },
   { gradient: 'linear-gradient(135deg, #2a1818, #403028)', label: 'Varanda Decorada', tag: 'Varanda' },
@@ -69,7 +59,7 @@ export default function InspirationPage() {
         <section className="section" aria-label="Galeria de ambientes inspiradores">
           <div className="container-elite">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {rooms.map(({ gradient, image, label, tag }, i) => (
+              {rooms.map(({ gradient, label, tag }, i) => (
                 <AnimatedSection key={label} delay={0.06 * i}>
                   <article
                     className="relative overflow-hidden group cursor-pointer"
@@ -78,30 +68,18 @@ export default function InspirationPage() {
                     }}
                     aria-label={label}
                   >
-                    {image ? (
-                      <Image
-                        src={image}
-                        alt={label}
-                        fill
-                        className="object-cover transition-transform duration-700 ease-luxury group-hover:scale-[1.06]"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
-                    ) : (
-                      <>
-                        <div
-                          className="absolute inset-0 transition-transform duration-700 ease-luxury group-hover:scale-[1.06]"
-                          style={{ background: gradient }}
-                          aria-hidden="true"
-                        />
-                        {/* Decoração interna */}
-                        <div
-                          className="absolute inset-0 flex items-center justify-center opacity-10"
-                          aria-hidden="true"
-                        >
-                          <div className="w-1/2 h-3/5 border border-gold/50" />
-                        </div>
-                      </>
-                    )}
+                    <div
+                      className="absolute inset-0 transition-transform duration-700 ease-luxury group-hover:scale-[1.06]"
+                      style={{ background: gradient }}
+                      aria-hidden="true"
+                    />
+                    {/* Decoração interna */}
+                    <div
+                      className="absolute inset-0 flex items-center justify-center opacity-10"
+                      aria-hidden="true"
+                    >
+                      <div className="w-1/2 h-3/5 border border-gold/50" />
+                    </div>
                     <div className="overlay-dark" aria-hidden="true" />
 
                     {/* Info */}

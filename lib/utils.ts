@@ -8,7 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 
 /** Gera a URL do WhatsApp com mensagem pré-definida */
 export function getWhatsAppUrl(message?: string): string {
-  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5531999990000'
+  const number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5531710587900'
   const defaultMsg =
     process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE ||
     'Olá! Gostaria de mais informações sobre os produtos da Líder Molduras.'

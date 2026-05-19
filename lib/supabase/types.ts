@@ -38,59 +38,8 @@ export type Database = {
           delivery_days: string | null  // Prazo estimado ex: '7 a 15 dias úteis'
           marketplace_url: string | null // Link externo para marketplace
         }
-        Insert: {
-          id?: string
-          created_at?: string
-          updated_at?: string
-          name: string
-          sku?: string | null
-          marketplace_title?: string | null
-          slug: string
-          category: 'quadro' | 'moldura' | 'espelho'
-          styles?: string[]
-          width_cm?: number
-          height_cm?: number
-          depth_cm?: number | null
-          colors?: string[]
-          materials?: string | null
-          finish?: string[]
-          environments?: string[]
-          description?: string | null
-          full_description?: string | null
-          images?: string[]
-          badge?: string | null
-          featured?: boolean
-          available?: boolean
-          delivery_days?: string | null
-          marketplace_url?: string | null
-        }
-        Update: {
-          id?: string
-          created_at?: string
-          updated_at?: string
-          name?: string
-          sku?: string | null
-          marketplace_title?: string | null
-          slug?: string
-          category?: 'quadro' | 'moldura' | 'espelho'
-          styles?: string[]
-          width_cm?: number
-          height_cm?: number
-          depth_cm?: number | null
-          colors?: string[]
-          materials?: string | null
-          finish?: string[]
-          environments?: string[]
-          description?: string | null
-          full_description?: string | null
-          images?: string[]
-          badge?: string | null
-          featured?: boolean
-          available?: boolean
-          delivery_days?: string | null
-          marketplace_url?: string | null
-        }
-        Relationships: []
+        Insert: Omit<Database['public']['Tables']['products']['Row'], 'id' | 'created_at' | 'updated_at'>
+        Update: Partial<Database['public']['Tables']['products']['Insert']>
       }
     }
     Views: Record<string, never>

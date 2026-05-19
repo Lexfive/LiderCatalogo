@@ -65,7 +65,7 @@ NEXT_PUBLIC_EMAIL=atendimento@lidermolduras.com.br
 
 1. Netlify → **Site settings → Environment variables**
 2. Adicione as mesmas variáveis com os valores de produção
-3. Em `NEXT_PUBLIC_SITE_URL`, use o domínio real do site, por exemplo `https://seu-dominio.com.br`
+3. Em `NEXT_PUBLIC_SITE_URL`, use o domínio real: `https://lidermolduras.com.br`
 
 ---
 

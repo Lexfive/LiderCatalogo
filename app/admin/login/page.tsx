@@ -1,11 +1,11 @@
 'use client'
 
-import { Suspense, useState } from 'react'
+import { useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { Eye, EyeOff, LogIn, Lock } from 'lucide-react'
 
-function AdminLoginForm() {
+export default function AdminLoginPage() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPw, setShowPw] = useState(false)
@@ -150,13 +150,5 @@ function AdminLoginForm() {
         </p>
       </div>
     </div>
-  )
-}
-
-export default function AdminLoginPage() {
-  return (
-    <Suspense fallback={null}>
-      <AdminLoginForm />
-    </Suspense>
   )
 }
