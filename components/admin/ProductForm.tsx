@@ -4,7 +4,7 @@ import { useState, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { useDropzone } from 'react-dropzone'
 import { createClient } from '@/lib/supabase/client'
-import { generateSlug, uploadProductImage, deleteProductImage } from '@/lib/supabase/products-db'
+import { generateSlug, uploadProductImage, deleteProductImage } from '@/lib/supabase/products-client'
 import { cn } from '@/lib/utils'
 import type { ProductRow } from '@/lib/supabase/types'
 import {
