@@ -1,21 +1,23 @@
-# ─── NETLIFY CONFIG ─────────────────────────────────────────────────────────────
-# O plugin @netlify/plugin-nextjs gerencia publish directory automaticamente
-# no modo SSR/ISR. NÃO defina publish = ".next" nesse caso — gera conflito.
-# Exceção: se usar `output: 'export'` (estático), use publish = "out".
-# ────────────────────────────────────────────────────────────────────────────────
+# ─── NETLIFY CONFIG ───────────────────────────────────────────────────────────
 
 [build]
   command = "npm run build"
-  # publish omitido: gerenciado pelo plugin Next.js
 
 [build.environment]
   NODE_VERSION = "20"
   NPM_VERSION  = "10"
+  # Variáveis NEXT_PUBLIC_* são públicas por design — ignorar no secrets scanning
+  SECRETS_SCAN_OMIT_KEYS  = "NEXT_PUBLIC_SITE_URL,NEXT_PUBLIC_WHATSAPP_NUMBER"
+  SECRETS_SCAN_OMIT_PATHS = "SETUP-SUPABASE.md,.env.example"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
-# Headers de segurança e performance
+# Ignorar @opentelemetry/api (dependência indireta do @supabase/ssr)
+[functions]
+  external_node_modules = ["@opentelemetry/api"]
+
+# Headers de segurança
 [[headers]]
   for = "/*"
   [headers.values]
@@ -33,10 +35,3 @@
   for = "/fonts/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-
-# Netlify Forms — backend gratuito de formulário
-# Ativado pelo atributo data-netlify="true" no <form>. Sem config extra aqui.
-
-# Ignorar @opentelemetry/api nas Node functions (dependência indireta do Supabase)
-[functions]
-  external_node_modules = ["@opentelemetry/api"]

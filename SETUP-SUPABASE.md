@@ -30,7 +30,7 @@
 
 1. No painel, vá em **Authentication → Users**
 2. Clique em **Invite user** (ou **Add user**)
-3. Informe o e-mail do admin: ex. `admin@lidermolduras.com.br`
+3. Informe o e-mail do admin: ex. `admin@SEU-DOMINIO.com.br`
 4. Defina uma senha segura
 5. **Guarde bem — este é o login para o painel /admin**
 
@@ -56,16 +56,16 @@ NEXT_PUBLIC_SUPABASE_URL=https://SEU_PROJECT_ID.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGci...
 SUPABASE_SERVICE_ROLE_KEY=eyJhbGci...
 
-NEXT_PUBLIC_SITE_URL=https://seu-dominio.netlify.app
+NEXT_PUBLIC_SITE_URL=https://SEU-DOMINIO.netlify.app
 NEXT_PUBLIC_WHATSAPP_NUMBER=5531999990000
-NEXT_PUBLIC_EMAIL=atendimento@lidermolduras.com.br
+NEXT_PUBLIC_EMAIL=atendimento@SEU-DOMINIO.com.br
 ```
 
 ### Netlify (produção)
 
 1. Netlify → **Site settings → Environment variables**
 2. Adicione as mesmas variáveis com os valores de produção
-3. Em `NEXT_PUBLIC_SITE_URL`, use o domínio real: `https://lidermolduras.com.br`
+3. Em `NEXT_PUBLIC_SITE_URL`, use o domínio real: `https://SEU-DOMINIO.com.br`
 
 ---
 

@@ -1,54 +1,50 @@
 /**
  * middleware.ts
  * Protege todas as rotas /admin/* exigindo sessão autenticada.
- * Redireciona para /admin/login se o usuário não estiver logado.
- * Redireciona para /admin/produtos se já estiver logado e acessar /admin/login.
+ *
+ * Usa apenas next/server (sem @supabase/ssr) para evitar o erro
+ * "@opentelemetry/api" no bundler de Edge Functions do Netlify.
+ * A verificação real de JWT acontece nos Server Components.
  */
 import { type NextRequest, NextResponse } from 'next/server'
-import { createServerClient, type CookieOptions } from '@supabase/ssr'
 
-export async function middleware(request: NextRequest) {
+export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
-  const response = NextResponse.next({ request })
 
-  // Cria cliente Supabase com acesso aos cookies do request/response
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        get(name: string) { return request.cookies.get(name)?.value },
-        set(name: string, value: string, options: CookieOptions) { response.cookies.set({ name, value, ...options }) },
-        remove(name: string, options: CookieOptions) { response.cookies.set({ name, value: '', ...options }) },
-      },
-    }
-  )
+  // Redirecionar /admin → /admin/produtos
+  if (pathname === '/admin') {
+    return NextResponse.redirect(new URL('/admin/produtos', request.url))
+  }
 
-  const { data: { session } } = await supabase.auth.getSession()
+  const isLoggedIn = hasSessionCookie(request)
 
-  // ── Rotas protegidas: /admin (exceto /admin/login) ──────────────────────────
+  // Rotas protegidas — redireciona para login se não há sessão
   if (pathname.startsWith('/admin') && pathname !== '/admin/login') {
-    if (!session) {
+    if (!isLoggedIn) {
       const loginUrl = new URL('/admin/login', request.url)
       loginUrl.searchParams.set('redirect', pathname)
       return NextResponse.redirect(loginUrl)
     }
   }
 
-  // ── Se já está logado e acessa /admin/login, redireciona para o painel ──────
-  if (pathname === '/admin/login' && session) {
+  // Já logado acessando /admin/login — vai para o painel
+  if (pathname === '/admin/login' && isLoggedIn) {
     return NextResponse.redirect(new URL('/admin/produtos', request.url))
   }
 
-  // ── Redireciona /admin para /admin/produtos ──────────────────────────────────
-  if (pathname === '/admin') {
-    return NextResponse.redirect(new URL('/admin/produtos', request.url))
-  }
+  return NextResponse.next()
+}
 
-  return response
+/**
+ * Detecta o cookie de sessão do Supabase Auth.
+ * O Supabase define cookies com o padrão: sb-<project-ref>-auth-token
+ */
+function hasSessionCookie(request: NextRequest): boolean {
+  return request.cookies.getAll().some(
+    (c) => c.name.startsWith('sb-') && c.name.endsWith('-auth-token')
+  )
 }
 
 export const config = {
-  // Aplica o middleware apenas nas rotas /admin
   matcher: ['/admin', '/admin/:path*'],
 }
