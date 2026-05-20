@@ -495,4 +495,4 @@ lider-molduras/
 
 ---
 
-*Desenvolvido com ❤️ — Líder Molduras © 2024*
+*Desenvolvido com ❤️ — Ramires Mohamed © 2026*
